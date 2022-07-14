@@ -1,3 +1,5 @@
+-- Create a table on SQL titled Employees using two existing tables.
+
 CREATE TABLE employees (
 	emp_no INT NOT NULL,
      birth_date DATE NOT NULL,
@@ -7,6 +9,9 @@ CREATE TABLE employees (
      hire_date DATE NOT NULL,
      PRIMARY KEY (emp_no)
 );
+
+-- Create a table titles retirement_titles where we join title using the employee numbers. 
+--We filter for emoloyees that are born between 1952 and 1955, which puts them at retirement age.
 
 SELECT employees.emp_no,
 employees.first_name,
@@ -44,8 +49,9 @@ group by title
 order by count(title) desc
 
 
+-- Create a table called dept_emp where we import data including columns
+-- emp_no, dept_no, from_date,to_date
 
--- Deliverable 2 
 CREATE TABLE dept_emp(
 	emp_no INT NOT NULL,
     dept_no VARCHAR NOT NULL,
@@ -53,6 +59,9 @@ CREATE TABLE dept_emp(
 	to_date DATE NOT NULL
 );
 
+
+-- Create a new table to see the unique employee numbers for those employees whose birthdays are in 1965
+-- and who are currently still employed. These will be ordered by the ascending emp_no.
 Select distinct on (employees.emp_no) employees.emp_no,
 employees.first_name,
 employees.last_name,
